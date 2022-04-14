@@ -39,7 +39,7 @@ export default defineComponent({
 			<div>
 				<div class="relative w-full" style={{ paddingBottom: this.getHeightScale() }}>
 					<div class="absolute w-full h-full overflow-hidden">
-						{renderSlot(this.$slots, 'default')}
+						{this.$slots.default && renderSlot(this.$slots, 'default')}
 					</div>
 				</div>
 			</div>

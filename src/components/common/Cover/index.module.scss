@@ -1,0 +1,17 @@
+.coverContainer {
+	.playButton {
+		@apply absolute;
+		&.rightBottom {
+			@apply right-3 bottom-3;
+		}
+		&.center {
+			@apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+		}
+		&.animal {
+			@apply hidden;
+			&:hover {
+				@apply block;
+			}
+		}
+	}
+}

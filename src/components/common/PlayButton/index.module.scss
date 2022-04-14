@@ -1,0 +1,6 @@
+.playButtonContainer {
+	@apply w-9 h-9 rounded-full bg-white bg-opacity-90 text-center leading-9;
+	.icon {
+		@apply text-lg ml-1 text-wy-red;
+	}
+}

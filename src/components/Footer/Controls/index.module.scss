@@ -1,42 +1,42 @@
 .controlContainer {
-  @apply w-96 text-center;
-  button {
-    @apply mx-4;
-    &:not(.playBtn):hover {
-      @apply text-wy-red;
-    }
-    &.playBtn {
-      @apply bg-gray-200 w-9 h-9 rounded-full;
-      &:hover {
-        @apply bg-gray-300;
-      }
-      .icon {
-        @apply text-lg;
-      }
-    }
-    &.modeBtn {
-      .icon {
-        @apply text-sm font-semibold;
-      }
-    }
-    &.cutBtn {
-      .icon {
-        @apply text-lg;
-      }
-    }
-    &.lyricBtn {
-      .icon {
-        @apply text-base;
-      }
-    }
-  }
-  .progress {
-    @apply mt-2 inline-flex w-full justify-between items-center;
-    :global(.progressBar) {
-      @apply flex-auto mx-3;
-    }
-    span {
-      @apply text-xs text-gray-400;
-    }
-  }
+	@apply w-96 text-center;
+	button {
+		@apply mx-4;
+		&:not(.playBtn):hover {
+			@apply text-wy-red;
+		}
+		&.playBtn {
+			@apply bg-gray-200 w-9 h-9 rounded-full;
+			&:hover {
+				@apply bg-gray-300;
+			}
+			.icon {
+				@apply text-lg;
+			}
+		}
+		&.modeBtn {
+			.icon {
+				@apply text-sm font-semibold;
+			}
+		}
+		&.cutBtn {
+			.icon {
+				@apply text-lg;
+			}
+		}
+		&.lyricBtn {
+			.icon {
+				@apply text-base;
+			}
+		}
+	}
+	.progress {
+		@apply mt-2 inline-flex w-full justify-between items-center;
+		.progressBar {
+			@apply flex-auto mx-3;
+		}
+		span {
+			@apply text-xs text-gray-400;
+		}
+	}
 }
