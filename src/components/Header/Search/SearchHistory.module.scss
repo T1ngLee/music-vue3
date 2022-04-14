@@ -1,0 +1,30 @@
+.searchHistory {
+  .titleBar {
+    @apply flex text-gray-500 items-center px-4 py-3;
+  }
+  .lookAll {
+    @apply ml-auto text-xs;
+  }
+  .deleteIcon,
+  .lookAll {
+    @apply cursor-pointer;
+    &:hover {
+      @apply text-black;
+    }
+  }
+  .historyContainer {
+    @apply px-4 overflow-hidden;
+    .historyItem {
+      @apply max-w-full mr-2 border rounded-full inline-block px-5 py-1 text-sm leading-4 relative cursor-pointer truncate;
+      .icon {
+        @apply absolute text-xs top-1/2 transform -translate-y-1/2 right-1 hidden;
+      }
+      &:hover {
+        @apply bg-gray-200;
+        .icon {
+          @apply block;
+        }
+      }
+    }
+  }
+}

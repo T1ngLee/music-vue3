@@ -1,0 +1,7 @@
+.buttonBase {
+  @apply w-full h-9 px-2 leading-9 rounded-sm text-sm cursor-pointer hover:bg-leftMenu-hover
+}
+
+.buttonActive {
+  @apply bg-leftMenu-hover font-extrabold text-lg leading-9
+}

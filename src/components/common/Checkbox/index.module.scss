@@ -1,0 +1,24 @@
+.checkbox {
+  @apply h-3 w-3 border border-gray-400 rounded-sm relative mr-1;
+  line-height: 15px;
+  &.fill {
+    @apply border;
+  }
+}
+
+.icon {
+  @apply text-wy-red hidden absolute left-1/2 top-1/2;
+  transform: translate(-50%, -47%);
+}
+
+.checked {
+  .icon {
+    display: block;
+  }
+  &.fill {
+    @apply bg-wy-red border-none;
+    .icon {
+      @apply text-white;
+    }
+  }
+}

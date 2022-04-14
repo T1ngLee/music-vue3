@@ -1,0 +1,29 @@
+.container {
+  @apply inline-flex h-full items-center justify-center align-bottom relative;
+  
+  .searchContainer {
+    @apply inline-block relative m-2;
+    .icon {
+      @apply absolute text-header-active-gray w-8 h-full text-center text-base leading-8;
+    }
+    input {
+      @apply bg-wy-deep-red2 h-8 w-40 outline-none rounded-full pl-8 pr-3 text-xs text-white caret-white;
+      &::placeholder {
+        @apply text-white text-opacity-50;
+      }
+    }
+  }
+
+  .tinggeshiqu {
+    @apply bg-wy-deep-red2 h-8 w-8 rounded-full inline-block text-center text-header-active-gray leading-8 text-lg cursor-pointer;
+  }
+}
+
+.searchDropdown {
+  @apply w-80 -left-10;
+  padding: 0 !important;
+  // h3 {
+  //   @apply text-base mr-1 text-gray-500;
+  // }
+  // visibility: visible;
+}

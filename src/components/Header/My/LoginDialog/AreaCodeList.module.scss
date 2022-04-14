@@ -1,0 +1,19 @@
+.areaList {
+  @apply absolute bg-white w-full z-10 border rounded-b h-60 overflow-auto select-none;
+  top: 38px;
+  .areaItem {
+    @apply flex items-center text-xs px-3 cursor-pointer h-7 ;
+    .areaIcon {
+      @apply w-5 h-5 mr-3;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+    &:hover {
+      @apply bg-gray-300;
+    }
+    &.checked {
+      @apply bg-gray-300;
+    }
+  }
+}

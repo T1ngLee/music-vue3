@@ -1,0 +1,86 @@
+.qrcodeIcon {
+  @apply bg-gray-100 p-2 pt-2 w-14 h-14 absolute left-0 top-0 cursor-pointer;
+  background-image: url('../../../../assets/images/qrcode.png');
+  background-size: 80%;
+  background-position: 6px 6px;
+  background-repeat: no-repeat;
+  .mask {
+    @apply border-white absolute left-0 top-0 border-28;
+    border-left-color: transparent;
+    border-top-color: transparent;
+  }
+  .tip {
+    @apply absolute text-xs w-28 text-white bg-gray-400 text-center py-1 rounded-sm left-full top-3;
+    border-radius: 4px;
+    .arrow {
+      @apply border-4 border-transparent absolute transform -translate-x-full top-1;
+      border-right-color: rgba(156, 163, 175, 1);
+    }
+  }
+}
+
+.content {
+  @apply px-8 mt-6;
+  .inputArea {
+    @apply grid grid-cols-12 border mt-7 text-sm relative rounded;
+    grid-template-rows: 38px 38px;
+    .areaCodeList {
+      @apply absolute bg-white w-full z-10 border rounded-b invisible;
+      &.isShow {
+        @apply visible;
+      }
+    }
+    .select {
+      @apply border-r flex items-center justify-between select-none;
+      grid-column: 1 / 5;
+    }
+    .account {
+      @apply px-3 font-semibold rounded-tr;
+      grid-column: 5 / 13;
+    }
+    .password {
+      @apply flex items-center border-t;
+      grid-column-start: 1;
+      grid-column-end: 13;
+      input {
+        @apply h-full w-full font-semibold;
+      }
+    }
+    input {
+      outline: none;
+      &::-webkit-input-placeholder {
+        @apply font-thin;
+      }
+    }
+  }
+  .baseStyle {
+    @apply block flex-none text-center font-thin text-gray-400;
+  }
+}
+
+.tipArea {
+  @apply my-1 h-8 flex justify-between items-center text-xs text-gray-600 select-none;
+}
+
+.modelArea {
+  @apply flex justify-around mt-2;
+  span {
+    @apply block w-10 h-10 border-2 rounded-full text-center leading-9 text-lg cursor-pointer text-gray-300;
+    &::before {
+      // @apply text-gray-500;
+    }
+    &:hover {
+      @apply bg-wy-red text-white;
+    }
+    &.checked {
+      @apply bg-wy-red text-white;
+    }
+  }
+}
+
+.clause {
+  @apply absolute bottom-8 left-1/2 transform -translate-x-1/2 text-xs select-none;
+  a {
+    @apply text-blue-600
+  }
+}

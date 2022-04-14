@@ -1,0 +1,9 @@
+.icon {
+  @apply h-8 w-8 text-header-active-gray text-center cursor-pointer hover:text-white;
+}
+
+.login {
+  @apply h-120 text-center relative;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+}

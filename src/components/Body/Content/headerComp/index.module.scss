@@ -1,0 +1,7 @@
+.base {
+  @apply mr-5 inline-block text-base cursor-pointer
+}
+
+.active {
+  @apply text-xl font-extrabold
+}

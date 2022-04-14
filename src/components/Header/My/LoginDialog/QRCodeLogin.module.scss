@@ -1,0 +1,88 @@
+.loginBox {
+  @apply h-120 text-center relative;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+.phone {
+  @apply transition-all absolute w-1/2 transform translate-x-1/2 opacity-0 duration-700 ease-in-out
+}
+
+.qrCode {
+  @apply transition-all w-44 h-44 absolute left-1/2 transform -translate-x-1/2 duration-700 ease-in-out;
+  span {
+    @apply hidden
+  }
+}
+
+.right {
+  @apply w-1/2 float-right h-full text-sm;
+  .loginTip {
+    @apply hidden
+  }
+}
+
+.noWrapSpan {
+  @apply block w-full absolute bottom-12 left-1/2 transform -translate-x-1/2 text-sm;
+}
+
+.hover {
+  .right span{
+    @apply block
+  }
+
+  .noWrapSpan {
+    @apply hidden
+  }
+
+  .qrCode {
+    @apply transition-all transform scale-75 translate-x-0 duration-700 ease-in-out;
+    span {
+      @apply delay-700 block
+    }
+  }
+
+  .phone {
+    @apply transition-all translate-x-0 opacity-100 duration-700 ease-in-out
+  }
+}
+
+.waitConfirm {
+  .qrCodeContainer,
+  .bottomText {
+    @apply hidden;
+  }
+
+  .waitConfirmTip {
+    @apply block
+  }
+}
+
+.qrCodeContainer {
+  @apply pt-8 relative;
+}
+
+.bottomText {
+  @apply cursor-pointer text-xs text-gray-600 self-start mt-6;
+}
+
+.waitConfirmTip {
+  @apply hidden mt-8;
+}
+
+.qrcodeMask {
+  @apply hidden w-44 h-44 absolute left-1/2 transform -translate-x-1/2;
+  .qrcodeMaskBg {
+    @apply h-full w-full bg-black opacity-80 absolute top-0 left-0;
+  }
+  .qrcodeMaskText {
+    @apply h-full w-full absolute top-0 left-0 flex flex-col justify-center items-center;
+    .refreshBtn {
+      @apply text-white bg-blue-600 w-1/2 leading-7 rounded-sm cursor-pointer mx-auto mt-5;
+    }
+  }
+}
+
+.expired .qrcodeMask{
+  @apply block;
+}

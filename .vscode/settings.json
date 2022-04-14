@@ -1,0 +1,16 @@
+{
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"fileheader.cursorMode": {
+		"description": "",
+		"param": "",
+		"return": ""
+	},
+	"prettier.useTabs": true,
+	"prettier.singleQuote": true,
+	"prettier.printWidth": 100,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"prettier.arrowParens": "avoid"
+}

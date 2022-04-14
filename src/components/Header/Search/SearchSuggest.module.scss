@@ -1,0 +1,23 @@
+.searchSuggest {
+  @apply py-5;
+  .classify {
+    .classifyTitle {
+      @apply px-5 text-base text-gray-400 font-extralight py-1;
+      .icon {
+        // @apply;
+      }
+      .title {
+        @apply ml-1;
+      }
+    }
+    .content {
+      @apply text-xs font-normal;
+      li {
+        @apply px-10 py-2;
+        &:hover {
+          @apply bg-gray-200;
+        }
+      }
+    }
+  }
+}

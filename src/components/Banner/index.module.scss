@@ -1,0 +1,66 @@
+.swiperContainer {
+  @apply w-full h-56 relative text-center p-3;
+  .swiperContent {
+    @apply absolute w-full h-52 left-0 top-0 m-0 p-0 bg-yellow-200;
+    &:hover {
+      .toggleBtn {
+        @apply visible;
+      }
+    }
+    .swiper {
+      @apply absolute m-0 p-0 top-0 left-1/2 w-full h-full 
+        bg-white bg-no-repeat bg-center bg-cover rounded-md
+        z-10 overflow-hidden;
+      transform: translate(-50%, 0) scale(0.8); 
+      width: 562px;
+      transition: 500ms all ease-in-out;
+      &::after {
+        @apply absolute left-0 right-0 top-0 bottom-0 bg-black bg-opacity-10;
+        content: "";
+        transition-delay: 100ms !important;
+        transition: all 500ms;
+      }
+      &.active {
+        @apply z-40 cursor-pointer;
+        transform: translate(-50%, 0);
+        &::after {
+          @apply bg-opacity-0;
+        }
+      }
+      &.prev {
+        @apply z-30;
+        transform: translate(-75%, 0) scale(0.8);
+      }
+      &.next {
+        @apply z-20;
+        transform: translate(-25%, 0) scale(0.8);
+      }
+      .typeTitle {
+        @apply h-6 text-xs leading-6 text-white not-italic absolute right-0 bottom-0 px-2 rounded-tl-md;
+      }
+    }
+    .toggleBtn {
+      @apply inline-block w-8 h-8 z-40 invisible
+        text-gray-100 text-center leading-8 text-xl font-semibold
+        rounded-full bg-gray-400 bg-opacity-25
+        absolute top-1/2
+        transform -translate-y-1/2
+        cursor-pointer hover:text-white;
+      &.arrowPrev {
+        @apply left-4;
+      }
+      &.arrowNext {
+        @apply right-4;
+      }
+    }
+  }
+  .dotBox {
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2;
+    .dot {
+      @apply inline-block h-1 w-5 bg-gray-300 mx-2 cursor-pointer align-bottom;
+      &.active {
+        @apply bg-wy-red;
+      }
+    }
+  }
+}

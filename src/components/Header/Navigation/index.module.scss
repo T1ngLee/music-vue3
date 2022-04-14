@@ -1,0 +1,9 @@
+.navigationContainer {
+  @apply inline-flex items-center ml-8 h-full align-bottom;
+  .arrowBtn {
+    @apply h-6 w-6 inline-block rounded-full text-center leading-6 text-base bg-wy-deep-red mr-2 text-header-unactive-gray;
+    &.active {
+      @apply text-white;
+    }
+  }
+}

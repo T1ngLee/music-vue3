@@ -1,0 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "./init.scss";
+
+/* iconfont 基础图标 */
+@import url("//at.alicdn.com/t/font_2919762_emajtu30sap.css");
