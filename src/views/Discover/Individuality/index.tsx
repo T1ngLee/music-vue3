@@ -10,48 +10,46 @@
  *        听听
  *        看看
  */
-import { defineComponent, onMounted, ref } from 'vue'
-import Swiper from '../../../components/Banner'
-import { requestBanner } from '../../../api/DiscoverApi'
-import { DiscoverTypes } from '../../../types/discover'
-import PlayButton from '../../../components/common/PlayButton'
-import Subhead from '../../../components/common/Subhead'
-import Square from '../../../components/common/ElasticBox'
-import RecommendSongList from './components/RecommendSongList'
+import { defineComponent, onMounted, ref } from 'vue';
+import Swiper from '../../../components/Banner';
+import { requestBanner } from '../../../api/DiscoverApi';
+import { DiscoverTypes } from '../../../types/discover';
+import PlayButton from '../../../components/common/PlayButton';
+import Subhead from '../../../components/common/Subhead';
+import Square from '../../../components/common/ElasticBox';
+import RecommendSongList from './components/RecommendSongList';
 
 export default defineComponent({
-  name: 'Individuality',
-  setup() {
-    const bannerList = ref<DiscoverTypes.BannerItem[]>([])
+	name: 'Individuality',
+	setup() {
+		const bannerList = ref<DiscoverTypes.BannerItem[]>([]);
 
-    onMounted(() => {
-      getBannerList()
-    })
+		onMounted(() => {
+			getBannerList();
+		});
 
-    // 获取轮播图
-    async function getBannerList() {
-      try {
-        // bannerList.value = await requestBanner()
-      } catch(e) {
-        // return []
-      }
-    }
-    
-    return {
-      bannerList
-    }
-  },
-  render() {
-    const {
-      bannerList
-    } = this
+		// 获取轮播图
+		async function getBannerList() {
+			try {
+				bannerList.value = await requestBanner();
+			} catch (e) {
+				// return []
+			}
+		}
 
-    return (
-      <div>
-        <Swiper list={ bannerList }/>
-        {/* <PlayButton /> */}
-        <RecommendSongList />
-      </div>
-    )
-  }
-})
+		return {
+			bannerList,
+		};
+	},
+	render() {
+		const { bannerList } = this;
+
+		return (
+			<div>
+				<Swiper list={bannerList} />
+				{/* <PlayButton /> */}
+				<RecommendSongList />
+			</div>
+		);
+	},
+});

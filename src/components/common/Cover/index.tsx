@@ -3,7 +3,7 @@
  * @Description: 通用封面
  */
 
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, renderSlot } from 'vue';
 import ElasticBox from '../ElasticBox';
 import ImageView from '../ImageView';
 import PlayButton, { PlayButtonSize as PlayButtonSizeType } from '../PlayButton';
@@ -31,25 +31,31 @@ export default defineComponent({
 	},
 	setup() {},
 	render() {
+		const { $slots, playButton } = this;
+
+		const getPlayButton = () => {
+			return (
+				<PlayButton
+					class={[
+						Styles.playButton,
+						this.playButtonPostion === 'center' ? Styles.center : Styles.rightBottom,
+						Styles.animal,
+					]}
+					size={this.playButtonSize}
+				/>
+			);
+		};
+
 		return (
 			<div class={Styles.coverContainer}>
 				<ElasticBox>
-					<div class="w-full h-full bg-red-500 relative">
-						// TODO 这里的hover效果
-						<ImageView hover />
-						<div class="absolute top-0 left-0 right-0 bottom-0">
-							{this.playButton && (
-								<PlayButton
-									class={[
-										Styles.playButton,
-										this.playButtonPostion === 'right-bottom' ? Styles.rightBottom : Styles.center,
-										Styles.animal,
-									]}
-									size={this.playButtonSize}
-								/>
-							)}
+					<ImageView hoverZoom>
+						<div class={Styles.slotsContainer}>
+							{$slots.header && renderSlot($slots, 'header')}
+							{$slots.footer && renderSlot($slots, 'footer')}
+							{playButton && getPlayButton()}
 						</div>
-					</div>
+					</ImageView>
 				</ElasticBox>
 				<span>234234234234234</span>
 			</div>

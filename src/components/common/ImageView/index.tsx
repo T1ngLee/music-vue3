@@ -3,8 +3,9 @@
  * @Description: 图片容器
  */
 
-import { defineComponent, onMounted, PropType, ref } from 'vue';
+import { defineComponent, onMounted, PropType, ref, renderSlot } from 'vue';
 import Styles from './index.module.scss';
+// import { useIntersectionObserver } from '@vueuse/core';
 
 enum LoadStatus {
 	/** 未加载 */
@@ -18,31 +19,65 @@ enum LoadStatus {
 export default defineComponent({
 	name: 'ImageView',
 	props: {
-		hover: {
+		hoverZoom: {
 			// hover时的缩放效果
 			type: Boolean,
 			default: false,
 		},
 		'object-fit': {
+			// 填充模式
 			type: String as PropType<'fill' | 'contain' | 'cover' | 'none' | 'scale-down'>,
 			default: 'cover',
+		},
+		lazy: {
+			// 懒加载
+			type: Boolean,
+			default: false,
 		},
 	},
 	setup() {
 		const img = ref<HTMLImageElement>();
 		const loadStatus = ref(LoadStatus.NOT_LOAD);
 
-		const observer = new IntersectionObserver(changes => {
-			changes.forEach(change => {
-				if (change.isIntersecting) {
-					(change.target as HTMLImageElement).src =
-						'https://p1.music.126.net/yvnBtrhnohwW0oo8M4_hjg==/109951165744483190.jpg';
-				}
-			});
-		});
+		// TODO 优化监听
+		const observer = new IntersectionObserver(
+			changes => {
+				changes.forEach(change => {
+					console.log(change);
+					if (
+						change.isIntersecting ||
+						(change.rootBounds?.bottom && change.boundingClientRect.top < change.rootBounds?.bottom)
+					) {
+						(change.target as HTMLImageElement).src =
+							'https://p1.music.126.net/yvnBtrhnohwW0oo8M4_hjg==/109951165744483190.jpg';
+					}
+
+					observer.unobserve(change.target);
+				});
+			},
+			{
+				rootMargin: '0px 0px 20px 0px',
+			}
+		);
 
 		onMounted(() => {
 			observer.observe(img.value!);
+
+			// const { stop } = useIntersectionObserver(img.value, (changes, b) => {
+			// 	changes.forEach(change => {
+			// 		console.log(change);
+			// 		if (
+			// 			change.isIntersecting
+			// 			// (change.rootBounds?.bottom && change.boundingClientRect.top < change.rootBounds?.bottom)
+			// 		) {
+			// 			(change.target as HTMLImageElement).src =
+			// 				'https://p1.music.126.net/yvnBtrhnohwW0oo8M4_hjg==/109951165744483190.jpg';
+			// 		}
+
+			// 		// observer.unobserve(change.target);
+			// 	});
+			// 	// console.log(changes, b);
+			// });
 		});
 
 		function handLoad(e: Event) {
@@ -77,15 +112,18 @@ export default defineComponent({
 						]}
 					></i>
 				</div>
-				<img
-					ref="img"
-					class={{ [Styles.hover]: this.hover }}
-					style={{
-						'object-fit': this.$props['object-fit'],
-					}}
-					onLoad={this.handLoad}
-					onError={this.handError}
-				/>
+				{/* hover 放到div上 不放在img上，是防止兄弟覆盖在img上方时，img上的hover失效 */}
+				<div class={{ [Styles.hover]: this.hoverZoom }}>
+					<img
+						ref="img"
+						style={{
+							'object-fit': this.$props['object-fit'],
+						}}
+						onLoad={this.handLoad}
+						onError={this.handError}
+					/>
+					{this.$slots.default && renderSlot(this.$slots, 'default')}
+				</div>
 			</>
 		);
 	},

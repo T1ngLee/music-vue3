@@ -104,12 +104,6 @@ export default defineComponent({
 				</div>
 				<div class={Styles.progress}>
 					<span>{this.showCurrentTime}</span>
-					{/* <ProgressBar
-            class="progressBar"
-            target={ this.audioState.duration } 
-            current={ this.audioState.currentTime } 
-            onProgressChange={ this.handleProgressChange }
-            /> */}
 					<ProgressBar
 						class={Styles.progressBar}
 						target={this.audioState.duration}

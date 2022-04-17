@@ -10,6 +10,7 @@
     "@types/crypto-js": "^4.1.1",
     "@types/lodash": "^4.14.179",
     "@types/qrcode": "^1.4.1",
+    "@vueuse/core": "^8.2.6",
     "axios": "^0.24.0",
     "crypto-js": "^4.1.1",
     "lodash": "^4.17.21",

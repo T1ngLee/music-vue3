@@ -1,16 +1,23 @@
 .coverContainer {
-	.playButton {
-		@apply absolute;
-		&.rightBottom {
-			@apply right-3 bottom-3;
+	.slotsContainer {
+		@apply absolute top-0 left-0 right-0 bottom-0;
+		.playButton {
+			@apply absolute;
+			&.rightBottom {
+				@apply right-3 bottom-3;
+			}
+			&.center {
+				@apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+			}
+			&.animal {
+				@apply opacity-0;
+				transition: all 300ms;
+			}
 		}
-		&.center {
-			@apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
-		}
-		&.animal {
-			@apply hidden;
-			&:hover {
-				@apply block;
+		&:hover {
+			.animal {
+				@apply opacity-100;
+				transition: all 300ms;
 			}
 		}
 	}
