@@ -34,8 +34,12 @@ export default defineComponent({
 			type: Boolean,
 			default: false,
 		},
+		imageUrl: {
+			default: '',
+			type: String,
+		},
 	},
-	setup() {
+	setup(props) {
 		const img = ref<HTMLImageElement>();
 		const loadStatus = ref(LoadStatus.NOT_LOAD);
 
@@ -43,13 +47,16 @@ export default defineComponent({
 		const observer = new IntersectionObserver(
 			changes => {
 				changes.forEach(change => {
-					console.log(change);
+					// console.log(change);
 					if (
 						change.isIntersecting ||
 						(change.rootBounds?.bottom && change.boundingClientRect.top < change.rootBounds?.bottom)
 					) {
-						(change.target as HTMLImageElement).src =
-							'https://p1.music.126.net/yvnBtrhnohwW0oo8M4_hjg==/109951165744483190.jpg';
+						if (props.imageUrl) {
+							(change.target as HTMLImageElement).src = props.imageUrl;
+						}
+
+						// 'https://p1.music.126.net/yvnBtrhnohwW0oo8M4_hjg==/109951165744483190.jpg';
 					}
 
 					observer.unobserve(change.target);

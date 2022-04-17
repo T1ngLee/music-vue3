@@ -4,11 +4,18 @@
  */
 
 export namespace DiscoverTypes {
-  /** banner的类型 */
-  export interface BannerItem {
-    targetId: number,
-    titleColor: string,
-    imageUrl: string,
-    typeTitle: string
-  }
+	/** banner的类型 */
+	export interface BannerItem {
+		targetId: number;
+		titleColor: string;
+		imageUrl: string;
+		typeTitle: string;
+	}
+
+	export type RecommendSongList = {
+		id: number;
+		name: string;
+		picUrl: string;
+		playCount: number;
+	}[];
 }

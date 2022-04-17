@@ -17,8 +17,20 @@ export async function requestBanner(): Promise<DiscoverTypes.BannerItem[]> {
 		return banners;
 	} catch (e) {
 		//
-		return [];
+		return Promise.reject(e);
 	}
 }
 
-// export async function request
+export async function requestRecommendSongList(
+	limit: number = 9
+): Promise<DiscoverTypes.RecommendSongList> {
+	try {
+		const data = await service.get(`/api/personalized?limit=${limit}`);
+		if (data.result) {
+			return data.result;
+		}
+		return Promise.reject('获取数据失败');
+	} catch (e) {
+		return Promise.reject(e);
+	}
+}

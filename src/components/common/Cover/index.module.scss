@@ -1,6 +1,6 @@
 .coverContainer {
 	.slotsContainer {
-		@apply absolute top-0 left-0 right-0 bottom-0;
+		@apply absolute top-0 left-0 right-0 bottom-0 text-white;
 		.playButton {
 			@apply absolute;
 			&.rightBottom {
@@ -14,10 +14,30 @@
 				transition: all 300ms;
 			}
 		}
+		.description {
+			@apply transform -translate-y-full bg-black bg-opacity-25 px-2 py-1;
+			transition: all 300ms;
+			transition-delay: 500ms;
+		}
+		.header {
+			@apply absolute top-0 left-0 right-0;
+			transition-delay: 700ms;
+		}
+		.footer {
+			@apply absolute bottom-0 left-0 right-0;
+		}
 		&:hover {
 			.animal {
 				@apply opacity-100;
 				transition: all 300ms;
+			}
+			.description {
+				@apply translate-y-0;
+				transition: all 300ms;
+				& + .header {
+					@apply opacity-0;
+					transition-delay: 0s;
+				}
 			}
 		}
 	}

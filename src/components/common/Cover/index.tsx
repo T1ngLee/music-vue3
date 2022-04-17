@@ -13,7 +13,7 @@ export default defineComponent({
 	name: 'Cover',
 	props: {
 		playButton: {
-			default: true,
+			default: false,
 			type: Boolean,
 		},
 		playButtonPostion: {
@@ -28,10 +28,21 @@ export default defineComponent({
 			default: true,
 			type: Boolean,
 		},
+		description: String, // 描述
+		imageUrl: String,
+		title: {
+			default: '',
+			type: String,
+		},
+		hoverZoom: {
+			// hover时的缩放效果
+			type: Boolean,
+			default: false,
+		},
 	},
 	setup() {},
 	render() {
-		const { $slots, playButton } = this;
+		const { $slots, playButton, description } = this;
 
 		const getPlayButton = () => {
 			return (
@@ -48,16 +59,20 @@ export default defineComponent({
 
 		return (
 			<div class={Styles.coverContainer}>
-				<ElasticBox>
-					<ImageView hoverZoom>
+				<ElasticBox class="rounded overflow-hidden">
+					<ImageView hoverZoom={this.hoverZoom} imageUrl={this.imageUrl}>
 						<div class={Styles.slotsContainer}>
-							{$slots.header && renderSlot($slots, 'header')}
-							{$slots.footer && renderSlot($slots, 'footer')}
+							{$slots.default && renderSlot($slots, 'default')}
+							{description && <div class={Styles.description}>{description}</div>}
+							{$slots.header && (
+								<div class={Styles.header}>{renderSlot($slots, 'header', { haha: 'haha' })}</div>
+							)}
+							{$slots.footer && <div class={Styles.footer}>{renderSlot($slots, 'footer')}</div>}
 							{playButton && getPlayButton()}
 						</div>
 					</ImageView>
 				</ElasticBox>
-				<span>234234234234234</span>
+				<span class="block mt-1 text-sm">{this.title}</span>
 			</div>
 		);
 	},
