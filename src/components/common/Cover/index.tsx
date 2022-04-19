@@ -40,9 +40,18 @@ export default defineComponent({
 			default: false,
 		},
 	},
-	setup() {},
+	emits: ['click'],
+	setup(props, { emit }) {
+		function handleClick() {
+			emit('click');
+		}
+
+		return {
+			handleClick,
+		};
+	},
 	render() {
-		const { $slots, playButton, description } = this;
+		const { $slots, playButton, description, handleClick } = this;
 
 		const getPlayButton = () => {
 			return (
@@ -58,7 +67,7 @@ export default defineComponent({
 		};
 
 		return (
-			<div class={Styles.coverContainer}>
+			<div class={Styles.coverContainer} onClick={handleClick}>
 				<ElasticBox class="rounded overflow-hidden">
 					<ImageView hoverZoom={this.hoverZoom} imageUrl={this.imageUrl}>
 						<div class={Styles.slotsContainer}>

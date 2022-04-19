@@ -47,7 +47,6 @@ export default defineComponent({
 		const observer = new IntersectionObserver(
 			changes => {
 				changes.forEach(change => {
-					// console.log(change);
 					if (
 						change.isIntersecting ||
 						(change.rootBounds?.bottom && change.boundingClientRect.top < change.rootBounds?.bottom)

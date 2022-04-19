@@ -10,11 +10,13 @@ import Cover from '../../../../../components/common/Cover';
 import { requestRecommendSongList } from '../../../../../api/DiscoverApi';
 import { DiscoverTypes } from '../../../../../types/discover';
 import { formatCount } from '../../../../../utils/Tools';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
 	name: 'RecommendSongList',
 	setup() {
 		const songList = ref<DiscoverTypes.RecommendSongList>([]);
+		const router = useRouter();
 
 		onMounted(() => {
 			getSongList();
@@ -29,8 +31,13 @@ export default defineComponent({
 			}
 		}
 
+		function toDetailPage(id: number) {
+			router.push({ name: 'SongListDetail', params: { id } });
+		}
+
 		return {
 			songList,
+			toDetailPage,
 		};
 	},
 	render() {
@@ -47,6 +54,7 @@ export default defineComponent({
 						playButtonPostion="right-bottom"
 						imageUrl={item.picUrl}
 						title={item.name}
+						onClick={() => this.toDetailPage(item.id)}
 					>
 						{{
 							header: () => <div>{formatCount(item.playCount)}</div>,
@@ -58,7 +66,7 @@ export default defineComponent({
 
 		return (
 			<>
-				<Subhead to={{ name: 'rankingList' }}>推荐歌单</Subhead>
+				<Subhead to={{ name: 'songList' }}>推荐歌单</Subhead>
 				<div class={Styles.container}>
 					<Cover
 						description="根据您的音乐口味生成每日推荐"
