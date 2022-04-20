@@ -4,6 +4,7 @@
  */
 
 import { defineComponent } from 'vue';
+import SongListInfo from './components/SongListInfo';
 
 export default defineComponent({
 	name: 'SongListDetail',
@@ -11,6 +12,10 @@ export default defineComponent({
 		return {};
 	},
 	render() {
-		return <div>gedan</div>;
+		return (
+			<div>
+				<SongListInfo />
+			</div>
+		);
 	},
 });

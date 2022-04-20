@@ -38,6 +38,14 @@ export default defineComponent({
 			default: '',
 			type: String,
 		},
+		width: {
+			default: '200px',
+			type: [String, Number],
+		},
+		height: {
+			default: '200px',
+			type: [String, Number],
+		},
 	},
 	setup(props) {
 		const img = ref<HTMLImageElement>();
@@ -95,11 +103,16 @@ export default defineComponent({
 			loadStatus.value = LoadStatus.FAIL;
 		}
 
+		function getWidthOrHeight(data: number | string): string {
+			return typeof data === 'number' ? data + 'px' : data;
+		}
+
 		return {
 			img,
 			handLoad,
 			handError,
 			loadStatus,
+			getWidthOrHeight,
 		};
 	},
 	render() {
@@ -124,6 +137,8 @@ export default defineComponent({
 						ref="img"
 						style={{
 							'object-fit': this.$props['object-fit'],
+							width: this.getWidthOrHeight(this.width),
+							height: this.getWidthOrHeight(this.height),
 						}}
 						onLoad={this.handLoad}
 						onError={this.handError}

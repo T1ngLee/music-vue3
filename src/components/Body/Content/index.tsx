@@ -33,7 +33,7 @@ export default defineComponent({
 		let header = null;
 		if (this.firstOrderChildren || this.pageTitle) {
 			header = (
-				<div class="mb-5 flex-none px-8">
+				<div class="my-5 flex-none px-8">
 					{
 						// 如果当前路由没有子路由则不加载导航菜单
 						this.firstOrderChildren ? (
@@ -49,9 +49,9 @@ export default defineComponent({
 		}
 
 		return (
-			<div id="content" class="h-full flex-grow break-all pt-5 select-none flex flex-col">
+			<div id="content" class="h-full flex-grow break-all select-none flex flex-col">
 				{header}
-				<div id="vvv" class="flex-auto overflow-auto w-full h-full pb-5 px-8">
+				<div class="flex-auto overflow-auto w-full h-full">
 					<div class="xl:w-bigScreen m-auto">
 						<RouterView />
 					</div>
